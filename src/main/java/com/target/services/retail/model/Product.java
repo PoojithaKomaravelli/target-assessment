@@ -46,6 +46,8 @@ public class Product  implements Serializable {
 
     @JsonProperty(value = "current_price", required = true)
     @ApiModelProperty(required = true)
+    @NonNull
+    @NotNull
     @Nonnull
     private Price currentPrice;
 

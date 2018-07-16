@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
-import org.springframework.hateoas.ResourceSupport;
 
 import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;

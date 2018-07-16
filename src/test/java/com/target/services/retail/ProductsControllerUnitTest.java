@@ -55,7 +55,7 @@ public class ProductsControllerUnitTest {
     public void testUpdatePricingDetails() throws Exception{
 
         // when
-        HttpEntity<BasicResponseResource> response= controller.updatePricingDetails(TestData.buildProductEntity());
+        HttpEntity<BasicResponseResource> response= controller.updatePricingDetails(TestData.TEST_PRODUCT_ID,TestData.buildProductEntity());
 
 
         assertThat(response, is(CoreMatchers.<HttpEntity<BasicResponseResource>>equalTo(

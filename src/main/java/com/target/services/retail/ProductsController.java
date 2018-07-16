@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -48,8 +49,14 @@ public class ProductsController {
             path = "/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BasicResponseResource> updatePricingDetails(@Validated @RequestBody Product product) throws RetailServiceException {
+    public ResponseEntity<BasicResponseResource> updatePricingDetails(@PathVariable("id") String productId,
+            @Validated @RequestBody Product product) throws RetailServiceException {
 
+        if (Integer.parseInt(productId) != product.getId()) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(BasicResponseResource.withMessage("The URL does not match the input data product Id."));
+        }
          productService.updatePricingDetails(product);
 
         return ResponseEntity

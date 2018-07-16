@@ -63,19 +63,19 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public Product getProductDetails(int productId) throws RetailServiceException {
+    public Product getProductDetails(String productId) throws RetailServiceException {
     
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUri + String.valueOf(productId) + "/")
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUri + productId + "/")
                 .queryParam("excludes", String.join(",", EXCLUSIONLIST));
 
         URI uri = builder.build().encode().toUri();
         try {
             ResponseEntity<JSONObject> responseEntity = restTemplate.getForEntity(uri, JSONObject.class);
             JSONObject responseJsonObject = responseEntity.getBody();
-            JsonFactory json = new JsonFactory();
+            JsonFactory jsonFactory = new JsonFactory();
             try {
-                JsonParser jParser = json.createJsonParser(responseJsonObject.toString());
+                JsonParser jParser = jsonFactory.createJsonParser(responseJsonObject.toString());
                 while (jParser.nextToken() != JsonToken.END_ARRAY) {
                     jParser.nextToken();
                     if (ITEM.equals(jParser.getCurrentName())) {
@@ -103,12 +103,12 @@ public class ProductServiceImpl implements ProductService {
 
                 throw new RetailServiceException(String.format("Couldnot fetch product name for:%1$d", productId));
             }
-            PriceEntity priceEntiy = repository.findByProductId(productId);
+            PriceEntity priceEntiy = repository.findByProductId(Integer.parseInt(productId));
             if (priceEntiy == null) {
                 throw new RetailServiceException(String.format("pricing details are not available for:%1$d", productId));
             }
             Product product = new Product();
-            product.setId(productId);
+            product.setId(Integer.parseInt(productId));
             product.setName(productName);
             product.setCurrentPrice(Price.builder()
                     .value(priceEntiy.getValue())
@@ -117,7 +117,7 @@ public class ProductServiceImpl implements ProductService {
             return product;
         }catch (HttpClientErrorException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
-                throw new RetailServiceException(String.format("No data found for given productId:%1$d",productId),e);
+                throw new RetailServiceException(String.format("No data found for given productId:%1$s",productId),e);
             } else {
                 throw new RetailServiceException(String.format("Third party service returned with negative response %1$d", e.getStatusCode()),e);
             }

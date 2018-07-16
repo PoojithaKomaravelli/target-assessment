@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ProductService {
 
-    Product getProductDetails(int productId) throws RetailServiceException;
+    Product getProductDetails(String productId) throws RetailServiceException;
 
     void updatePricingDetails(Product product) throws RetailServiceException;
 }

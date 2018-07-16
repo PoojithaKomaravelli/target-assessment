@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;
@@ -25,12 +26,15 @@ import java.io.Serializable;
 @JsonRootName("product")
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE, fieldVisibility = JsonAutoDetect.Visibility.NONE)
 @JsonInclude(value = JsonInclude.Include.NON_ABSENT)
-public class Product implements Serializable {
+public class Product  implements Serializable {
 
     public static final long serialVersionUID = 1L;
 
     @JsonProperty(value = "id", required = true)
     @ApiModelProperty(example = "12345678", required = true)
+    @NonNull
+    @NotNull
+    @Nonnull
     private int id;
 
     @JsonProperty(value = "name", required = true)
@@ -42,6 +46,7 @@ public class Product implements Serializable {
 
     @JsonProperty(value = "current_price", required = true)
     @ApiModelProperty(required = true)
+    @Nonnull
     private Price currentPrice;
 
 

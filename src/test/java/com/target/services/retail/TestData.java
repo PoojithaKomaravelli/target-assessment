@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class TestData {
 
 
-    public  static final int TEST_PRODUCT_ID = 123456;
+    public  static final String TEST_PRODUCT_ID = "123456";
     public static final String  TEST_PRODUCT_NAME = "product-name";
 
     public static  Price buildProductPrice(){
@@ -21,6 +21,6 @@ public class TestData {
 
     public static Product buildProductEntity(){
 
-        return Product.builder().currentPrice(buildProductPrice()).id(TEST_PRODUCT_ID).name(TEST_PRODUCT_NAME).build();
+        return Product.builder().currentPrice(buildProductPrice()).id(Integer.parseInt(TEST_PRODUCT_ID)).name(TEST_PRODUCT_NAME).build();
     }
 }

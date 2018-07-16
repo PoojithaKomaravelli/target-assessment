@@ -1,0 +1,12 @@
+target:
+    redsky:
+        url: https://redsky.target.com/v2/pdp/tcin/
+
+info:
+    build:
+        version: 0.0.0-dev
+
+spring:
+    main:
+        show-banner: false
+        banner-mode: "off"

@@ -23,7 +23,7 @@ public class PriceEntity {
 
     @NonNull
     @Indexed(unique = true)
-    private Integer productId;
+    private String productId;
 
     @NonNull
     private String currencyCode;

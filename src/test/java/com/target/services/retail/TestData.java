@@ -21,6 +21,6 @@ public class TestData {
 
     public static Product buildProductEntity(){
 
-        return Product.builder().currentPrice(buildProductPrice()).id(Integer.parseInt(TEST_PRODUCT_ID)).name(TEST_PRODUCT_NAME).build();
+        return Product.builder().currentPrice(buildProductPrice()).id(TEST_PRODUCT_ID).name(TEST_PRODUCT_NAME).build();
     }
 }

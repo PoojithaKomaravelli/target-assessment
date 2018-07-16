@@ -8,5 +8,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface  PriceRepository extends MongoRepository<PriceEntity,Integer>{
 
-    PriceEntity findByProductId(int productId);
+    PriceEntity findByProductId(String productId);
 }

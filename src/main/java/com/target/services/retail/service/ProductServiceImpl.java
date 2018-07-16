@@ -103,12 +103,12 @@ public class ProductServiceImpl implements ProductService {
 
                 throw new RetailServiceException(String.format("Couldnot fetch product name for:%1$d", productId));
             }
-            PriceEntity priceEntiy = repository.findByProductId(Integer.parseInt(productId));
+            PriceEntity priceEntiy = repository.findByProductId(productId);
             if (priceEntiy == null) {
                 throw new RetailServiceException(String.format("pricing details are not available for:%1$d", productId));
             }
             Product product = new Product();
-            product.setId(Integer.parseInt(productId));
+            product.setId(productId);
             product.setName(productName);
             product.setCurrentPrice(Price.builder()
                     .value(priceEntiy.getValue())

@@ -28,8 +28,8 @@ public class MyRetailRestApiApplication {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... strings) throws Exception {
-				priceRepository.save(new PriceEntity(13860500,"USD",new BigDecimal(12)));
-				priceRepository.save(new PriceEntity(13860428,"USD",new BigDecimal(14)));
+				priceRepository.save(new PriceEntity("13860500","USD",new BigDecimal(12)));
+				priceRepository.save(new PriceEntity("13860428","USD",new BigDecimal(14)));
 			}
 
 		};

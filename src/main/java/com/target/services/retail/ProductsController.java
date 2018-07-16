@@ -52,7 +52,7 @@ public class ProductsController {
     public ResponseEntity<BasicResponseResource> updatePricingDetails(@PathVariable("id") String productId,
             @Validated @RequestBody Product product) throws RetailServiceException {
 
-        if (Integer.parseInt(productId) != product.getId()) {
+        if (!StringUtils.equalsIgnoreCase(productId, product.getId())) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(BasicResponseResource.withMessage("The URL does not match the input data product Id."));

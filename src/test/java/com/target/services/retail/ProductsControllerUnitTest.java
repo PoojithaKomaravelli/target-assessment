@@ -41,7 +41,7 @@ public class ProductsControllerUnitTest {
     public void testGetProductById() throws Exception{
 
         // given
-        given(productService.getProductDetails(TestData.TEST_PRODUCT_ID)).willReturn(Product.builder().id(Integer.parseInt(TestData.TEST_PRODUCT_ID)).name(TestData.TEST_PRODUCT_NAME).currentPrice(TestData.buildProductPrice()).build());
+        given(productService.getProductDetails(TestData.TEST_PRODUCT_ID)).willReturn(Product.builder().id(TestData.TEST_PRODUCT_ID).name(TestData.TEST_PRODUCT_NAME).currentPrice(TestData.buildProductPrice()).build());
 
         // when
         ResponseEntity<Product> result = (ResponseEntity<Product>) controller.getProductById(TestData.TEST_PRODUCT_ID);

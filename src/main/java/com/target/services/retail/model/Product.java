@@ -35,7 +35,7 @@ public class Product  implements Serializable {
     @NonNull
     @NotNull
     @Nonnull
-    private int id;
+    private String id;
 
     @JsonProperty(value = "name", required = true)
     @ApiModelProperty(example = "The Big Lebowski (Blu-ray) (Widescreen)", required = true)

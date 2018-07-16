@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.target.services.retail.exception.RetailServiceException;
 import com.target.services.retail.model.Price;
-import com.target.services.retail.model.PriceEntity;
+import com.target.services.retail.model.PriceDocument;
 import com.target.services.retail.model.Product;
 import com.target.services.retail.repository.PriceRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -103,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
 
                 throw new RetailServiceException(String.format("Couldnot fetch product name for:%1$d", productId));
             }
-            PriceEntity priceEntiy = repository.findByProductId(productId);
+            PriceDocument priceEntiy = repository.findByProductId(productId);
             if (priceEntiy == null) {
                 throw new RetailServiceException(String.format("pricing details are not available for:%1$d", productId));
             }
@@ -130,7 +130,7 @@ public class ProductServiceImpl implements ProductService {
     public void updatePricingDetails(Product product) throws RetailServiceException {
         log.info("{}",repository.findAll());
 
-        PriceEntity entity =repository.findByProductId(product.getId());
+        PriceDocument entity =repository.findByProductId(product.getId());
         if(entity == null ){
             throw new RetailServiceException(String.format("No records found for %1$d",product.getId()));
         }

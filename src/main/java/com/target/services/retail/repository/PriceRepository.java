@@ -1,12 +1,12 @@
 package com.target.services.retail.repository;
 
-import com.target.services.retail.model.PriceEntity;
+import com.target.services.retail.model.PriceDocument;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  * Created by PKomaravelli on 7/12/2018.
  */
-public interface  PriceRepository extends MongoRepository<PriceEntity,Integer>{
+public interface  PriceRepository extends MongoRepository<PriceDocument,Integer>{
 
-    PriceEntity findByProductId(String productId);
+    PriceDocument findByProductId(String productId);
 }

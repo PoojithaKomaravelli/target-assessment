@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Document
 @Data
 @RequiredArgsConstructor
-public class PriceEntity {
+public class PriceDocument {
 
     @Id
     private String id;

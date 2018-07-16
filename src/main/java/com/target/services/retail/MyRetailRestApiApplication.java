@@ -1,6 +1,6 @@
 package com.target.services.retail;
 
-import com.target.services.retail.model.PriceEntity;
+import com.target.services.retail.model.PriceDocument;
 import com.target.services.retail.repository.PriceRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,8 +28,8 @@ public class MyRetailRestApiApplication {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... strings) throws Exception {
-				priceRepository.save(new PriceEntity("13860500","USD",new BigDecimal(12)));
-				priceRepository.save(new PriceEntity("13860428","USD",new BigDecimal(14)));
+				priceRepository.save(new PriceDocument("13860500","USD",new BigDecimal(12)));
+				priceRepository.save(new PriceDocument("13860428","USD",new BigDecimal(14)));
 			}
 
 		};

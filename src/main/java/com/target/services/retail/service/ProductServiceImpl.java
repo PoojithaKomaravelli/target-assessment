@@ -132,7 +132,7 @@ public class ProductServiceImpl implements ProductService {
 
         PriceDocument entity =repository.findByProductId(product.getId());
         if(entity == null ){
-            throw new RetailServiceException(String.format("No records found for %1$d",product.getId()));
+            throw new RetailServiceException(String.format("No records found for %1$s",product.getId()));
         }
         entity.setCurrencyCode(product.getCurrentPrice().getCurrencyCode());
         entity.setValue(product.getCurrentPrice().getValue());

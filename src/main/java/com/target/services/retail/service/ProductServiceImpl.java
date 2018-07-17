@@ -101,11 +101,11 @@ public class ProductServiceImpl implements ProductService {
             }
             if (productName == null) {
 
-                throw new RetailServiceException(String.format("Couldnot fetch product name for:%1$d", productId));
+                throw new RetailServiceException(String.format("Couldnot fetch product name for:%1$s", productId));
             }
             PriceDocument priceEntiy = repository.findByProductId(productId);
             if (priceEntiy == null) {
-                throw new RetailServiceException(String.format("pricing details are not available for:%1$d", productId));
+                throw new RetailServiceException(String.format("pricing details are not available for:%1$s", productId));
             }
             Product product = new Product();
             product.setId(productId);
